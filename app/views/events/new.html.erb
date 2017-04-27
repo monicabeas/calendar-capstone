@@ -1,0 +1,21 @@
+<h1> Enter Event </h1>
+
+<%= form_tag "/events", method: :post do %> 
+	Title: <input type="text" name="input_title">
+	<br />
+	Start Time: <input type="datetime-local" name="input_start_time">
+	<br />
+	End Time: <input type="datetime-local" name="input_end_time">
+	<br />
+	Location: <input type="text" name="input_location">
+	<br /> 
+	Description: <input type="text" name="input_description">
+	<br />
+	Category: <%= collection_select(:event, :category_id, Category.all, :id, :category, prompt: "Select a Category") %>
+	<br />
+	User id: <input type="number" name="input_user_id">
+	<br />
+	<input type="submit" Value="Enter Task">
+
+
+<% end %> 

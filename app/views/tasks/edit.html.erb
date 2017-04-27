@@ -1,0 +1,17 @@
+<h1> Edit Task </h1>
+
+
+<%= form_tag "/tasks/#{@task.id}", method: :patch do  %>
+	Title: <input type="text" name="input_title" value="<%= @task.title %>">
+	<br />
+	Due Date: <input type="date" name="input_due_date" value="<%= @task.due_date %>">
+	<br />
+	Notes: <input type="text" name="input_notes" value="<%= @task.notes %>">
+	<br /> 
+	Task Type: <input type="text" name="input_type" value="<%= @task.task_type %>">
+	<br />
+	User id: <input type="number" name="user_type" value="<%= @task.user_id %>">
+	<br />
+	<input type="submit" Value="Edit Task">
+
+<% end %> 
