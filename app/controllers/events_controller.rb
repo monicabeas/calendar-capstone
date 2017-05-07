@@ -38,5 +38,9 @@ class EventsController < ApplicationController
     @event.save
     
   end 
+
+  def test 
+
+  end
    
 end
