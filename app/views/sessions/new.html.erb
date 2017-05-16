@@ -1,13 +1,27 @@
-<h1> Login </h1>
-
-<%= form_tag "/login", method: :post do %>
-<div> 
-Email: <input type="text" name="input_email">
-</div>
-<div> 
-Password: <input type="password" name="input_password">
-<input type="submit" value="Log In">
+ <!-- Base Styles -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
 
 
 
-<% end %> 
+      <h2 class="form-heading">login</h2>
+      <div class="container log-row">
+        <div class="form-signin">
+              <div class="login-wrap" class="form-signin" >
+              <%= form_tag "/login", method: :post do %>
+              	<input type="text" class="form-control"  class="form-signin" name="input_email" placeholder="Email">
+              	<input type="password" class="form-control"  name="input_password" placeholder="Password">
+                <button class="btn btn-lg btn-success btn-block" type="submit">LOGIN</button>
+              <% end %> 
+                  <div class="registration">
+                      Don't have an account yet?
+                      <a class="" href="/signup">
+                          Create an account
+                      </a>
+                  </div>
+
+              </div>
+        </div>
+      </div>
+
+

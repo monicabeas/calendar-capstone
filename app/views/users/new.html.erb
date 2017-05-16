@@ -1,15 +1,24 @@
-<h1> Sign up! </h1>
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/style-responsive.css" rel="stylesheet">
 
-<%= form_tag "/users", method: :post do %> 
-	Name: <input type="text" name="input_name">
-	<br />
-	Email: <input type="text" name="input_email">
-	<br />
-	Password: <input type="password" name="password">
-	<br />
-	Confirm Password: <input type="password" name="password_confirmation">
-	<br />
-	
-	<input type="submit" Value="Sign up">
+      <h2 class="form-heading">Register Now</h2>
+      <div class="container log-row">
+          <div class="form-signin">
+              <p>Enter your personal details below</p>
+              <%= form_tag "/signup", method: :post do %> 
+              <input type="text" class="form-control" name="input_name" placeholder="Full Name" autofocus>
+              <p> Enter your account details below</p>
+              <input type="text" class="form-control" name="input_email" placeholder="Email" autofocus>
+              <input type="password" class="form-control" name="password" placeholder="Password">
+              <input type="password" class="form-control" name="password_confirmation" placeholder="Re-type Password">
 
-<% end %> 
+              <button class="btn btn-lg btn-success btn-block" type="submit">Submit</button>
+              <% end %> 
+              <div class="registration m-t-20 m-b-20">
+                  Already Registered.
+                  <a class="" href="/login">
+                      Login
+                  </a>
+              </div>
+          </div>
+      </div>

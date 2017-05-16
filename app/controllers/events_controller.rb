@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   
   def index 
     @events = current_user.events 
+
   end 
 
 
@@ -19,7 +20,7 @@ class EventsController < ApplicationController
       location: params[:input_location], 
       description: params[:input_description],
       category_id: params[:event][:category_id],
-      user_id: current_user.id
+      user_id: params
       )
   end 
   def edit 

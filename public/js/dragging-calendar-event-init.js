@@ -14,6 +14,7 @@ var Script = function () {
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
+        selectable: true,
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar !!!
         drop: function(date, allDay) { // this function is called when something is dropped
@@ -39,19 +40,36 @@ var Script = function () {
             }
 
         },
+        select: function(start, end, jsEvent, view) {
+           var title = prompt("Enter a title for this event", "New event");
 
+           var event = {
+                title: title.trim() != "" ? title : "New event",
+                start: start,
+                end: end, 
+                };
+
+            console.log(event);
+
+            $.post('http://localhost:3000/api/v1/events.json', event, function(result){
+
+            }, 'json');
+
+            var calendar = $('#calendar');
+            calendar.fullCalendar('renderEvent', {title: title, start: start, end: end, allDay: false}, true);
+            },
+        eventClick: function(calEvent, jsEvent, view) {
+
+            var NewTitle = prompt("Enter a new title for this event", event.title);
+        
+        
+
+        },
         events: {
             url: 'http://localhost:3000/api/v1/events.json',
             type: 'GET',
-        data: {
-            custom_param1: 'something',
-            custom_param2: 'somethingelse'
-        },
-        error: function() {
-            alert('there was an error while fetching events!');
-        },
-        color: 'yellow',   // a non-ajax option
-        textColor: 'black' // a non-ajax option
+            color: 'yellow',   // a non-ajax option
+            textColor: 'black' // a non-ajax option
         }
         // events: [
         //     {
