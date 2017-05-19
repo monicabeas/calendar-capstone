@@ -11,6 +11,7 @@ class Api::V1::EventsController < ApplicationController
       title: params[:title],
       start_time: params[:start],
       end_time: params[:end],
+      allDay: params[:allDay],
       # location: params[:input_location], 
       # description: params[:input_description],
       # category_id: params[:event][:category_id],

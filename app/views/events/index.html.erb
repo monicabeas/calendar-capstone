@@ -26,10 +26,6 @@
                         <h3 class="navigation-title">Navigation</h3>
                     </li>
                     <li class="active"><a href="/events"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-                    <li>
-                        <a href="/tasks"><i class="fa fa-laptop"></i>  <span>Tasks</span></a>
-            
-                    </li>
                 </ul>
                 <!--sidebar nav end-->
 
@@ -45,10 +41,10 @@
 
                 <!--logo and logo icon start-->
                 <div class="logo dark-logo-bg hidden-xs hidden-sm">
-                    <a href="index.html">
+                    <a href="/events">
                         <img src="/img/logo-icon.png" alt="">
                         <!--<i class="fa fa-maxcdn"></i>-->
-                        <span class="brand-name">SlickLab</span>
+                        <span class="brand-name">Calendario</span>
                     </a>
                 </div>
 
@@ -105,7 +101,7 @@
                 <h3>
                     Dashboard
                 </h3>
-                <span class="sub-title">Welcome to SlickLab dashboard</span>
+                <span class="sub-title">Welcome <%= @current_user.name %> </span>
                 <div class="state-information">
                 </div>
             </div>
@@ -118,8 +114,52 @@
 
                 <!-- page start-->
                 <div class="row">
-                    <aside class="col-lg-3">
-                        <h4 class="drg-event-title"> Add Events</h4>
+                    <aside class="col-lg-4">
+                        <div id="todo-list"> 
+                            <h4 class="drg-event-title"> Add Tasks</h4>
+                                    <div class="task-panels"> 
+                                        <input type="checkbox" id="mark-all" @click="selectAll" :checked="areAllSelected">
+                                        <input v-model="newTask" @keyup.enter="addTask" placeholder="What do you need to do?" autofocus class="text-input">
+                                        <button @click="clearList">Clear List</button>
+
+                                     </div>
+
+                                     <div  class="list">
+                                      <ul class="list-item">
+
+                                        <li v-for="task in tasks" :class="{done: isChecked(task)}" class="task-panels">
+
+                                          <input type="checkbox" class="checkbox" @click="check" v-model="task.checked">
+                                          
+                                          <input type="text" v-if="task === editingTask" v-auto-focus class="text-input" @keyup.enter="endEditing(task)" @blur="endEditing(task)" v-model="task.text">
+
+                                          <label for="checkbox" v-if="task !== editingTask" @dblclick="editTask(task)">{{ task.text }}</label>
+                                          
+                                          <button class="delete" @click="removeTask(task)">X</button>
+
+                                        </li>
+                                
+                                      </ul>
+                                    
+                                    </div>
+                                   
+                                   <!--  <li class="clearfix" v-for="task in tasks" >
+                                        <div class="chk-todo pull-left">
+                                            <input v-on:click="completeTask(task)" v-bind:class="{strike: task.completed}" type="checkbox" value="0" />   
+                                        </div>
+                                        <p class="todo-title" >
+                                            {{ task.text }}
+                                        </p>
+                                        <div class="action-todo pull-right clearfix">
+                                            <a href="#" class="todo-edit"><i class="icon-pencil"></i></a>
+                                            <a href="#" class="todo-remove"><i class="icon-close"></i></a>
+                                        </div>
+                                    </li> -->
+                                    <!-- <input type="text" v-model="newTask">
+                                    <button v-on:click="addTask()">Add a New Task!</button> -->
+
+                        </div>
+                       <!--  <h4 class="drg-event-title"> Add Events</h4>
 
                             <div id="app" class="form-group">
                                 <input type="text" class="form-control" name="title" placeholder="Enter Event Title" v-model="title">
@@ -132,10 +172,10 @@
                                 <input type="checkbox"> 
                             
                                 <button class="btn btn-primary" style="width: 100%" v-on:click="addEvent()">Add New Event</button>
-                            </div>
+                            </div> -->
                       
                     </aside>
-                    <aside class="col-lg-9">
+                    <aside class="col-lg-8">
                         <section class="panel">
                             <div class="panel-body">
                                 <div id="calendar" class="has-toolbar"></div>

@@ -9,6 +9,7 @@ var Script = function () {
     var y = date.getFullYear();
 
     $('#calendar').fullCalendar({
+        defaultView: 'agendaWeek',
         header: {
             left: 'prev,next today',
             center: 'title',
@@ -40,13 +41,14 @@ var Script = function () {
             }
 
         },
-        select: function(start, end, jsEvent, view) {
+        select: function(start, end, allDay, jsEvent, view) {
            var title = prompt("Enter a title for this event", "New event");
 
            var event = {
                 title: title.trim() != "" ? title : "New event",
                 start: start,
                 end: end, 
+                allDay: allDay===undefined ? true : allDay
                 };
 
             console.log(event);
@@ -56,12 +58,13 @@ var Script = function () {
             }, 'json');
 
             var calendar = $('#calendar');
-            calendar.fullCalendar('renderEvent', {title: title, start: start, end: end, allDay: false}, true);
-            },
+
+            calendar.fullCalendar('renderEvent', {title: title, start: start, end: end, allDay: allDay}, true);
+        },
+
         eventClick: function(calEvent, jsEvent, view) {
 
-            var NewTitle = prompt("Enter a new title for this event", event.title);
-        
+            var NewTitle = prompt("Enter a new title for this event");
         
 
         },

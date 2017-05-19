@@ -1,3 +1,65 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+ul, li {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.task-panels{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	list-style-type: none;
+	padding: 8px;
+	border-bottom: 1px solid #efefef;
+	background-color: #E7E8EB;
+}
+.text-input {
+	border: 1px solid #dedede;
+	padding-left: 15px;
+	width: 70%;
+	height: 35px;
+	color: #555;
+}
+button {
+	color: #555;
+	background-color: #FFFFFF;
+	border: 1px solid #bbb;
+	outline: 0;
+	width: 75px;
+	height: 35px;
+	cursor: pointer;
+	font-size: 10px;
+}
+.list li {
+	background-color: #a978d1;
+}
+.list li button {
+	background-color: transparent;
+	border: 1px solid 000000;
+	color: #ddd;
+	visibility: hidden;
+	font-size: 18px;
+	font-weight: bold;
+}
+.list li:hover > button {
+	visibility: visible;
+}
+.list label {
+	padding-right: 10px;
+	display: inline-block;
+	width: 69%;
+	font-size: 17px;
+	line-height: 20px;
+	color: #fcfcfc;
+	z-index: 2;
+	overflow: hidden;
+}
+.list li.done label {
+	color: #d9d9d9;
+	text-decoration: line-through;
+}
