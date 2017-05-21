@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   def index 
     @events = current_user.events 
 
+    @quote = Unirest.get("http://www.quotzzy.co/api/quote").body
   end 
 
 
