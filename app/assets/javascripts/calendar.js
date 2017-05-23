@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       newTask: '',
       tasks: [
         {
-          text: 'Walk the dog',
+          text: 'Install Vue.js',
           completed: false
         }
       ],

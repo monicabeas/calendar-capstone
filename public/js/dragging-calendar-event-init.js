@@ -9,7 +9,7 @@ var Script = function () {
     var y = date.getFullYear();
 
     $('#calendar').fullCalendar({
-        defaultView: 'agendaWeek',
+        defaultView: 'month',
         header: {
             left: 'prev,next today',
             center: 'title',

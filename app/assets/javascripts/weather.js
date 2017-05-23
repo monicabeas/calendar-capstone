@@ -19,8 +19,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     		this.forecast = response.query.results.channel.item.forecast;
     	}.bind(this));
 			}
-			// getWeatherIcon: function(day){
-			// 	if(day.text.includes("Sunny") || day.text.includes("Clear")){
+
+			// getWeatherIcon: function(){
+			// 	if(this.weatherData.item.condition.text.includes("Sunny") || this.weatherData.item.condition.text.includes("Clear")){
 			// 		return "slicon-weather_sun";
 			// 	} else if (day.text.includes("Cloudy")){
 			// 		return "slicon-weather_cloud";
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			// 		return "slicon-weather_rain";
 			// 	} else if (day.text.includes("Breezy") || (day.text.includes("Windy")) {
 			// 		return "slicon-weather_wind";
+			// 	}
 			// }
     }
   });
