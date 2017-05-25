@@ -1487,15 +1487,22 @@ a.btn-view-all {
     padding: 20px;
     background: #e8e8e8;
     position: relative;
+    background-image: url('https://www.aaltasports.com/wp-content/themes/natural-lite/images/default-header.jpg');
 }
 
 .page-head h3 {
     margin-top: 0;
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 320;
+    color: #FFFFFF;
+}
+.page-head p {
+    margin-top: 0;
+    font-weight: 320;
+    color: #FFFFFF;
 }
 .page-head .sub-title {
-    color: #a3a3a3;
+    color: #FFFFFF;
     font-size: 14px;
 }
 

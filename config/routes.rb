@@ -5,6 +5,12 @@ Rails.application.routes.draw do
     namespace :v1 do 
       get "/events" => "events#index"
       post "/events" => 'events#create'
+
+      get "/tasks" => "tasks#index"
+      post "/tasks" => "tasks#create"
+
+      delete "/tasks/:id" => "tasks#destroy"
+
     end 
   end 
 

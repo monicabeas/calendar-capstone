@@ -27,15 +27,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     el: '#todo-list',
     data: {
       newTask: '',
-      tasks: [
-        {
-          text: 'Install Vue.js',
-          completed: false
-        }
-      ],
+      tasks: [],
       editingTask: {
 
       }
+    },
+    mounted: function(){
+      $.get('http://localhost:3000/api/v1/tasks.json', function(result){
+        this.tasks = result;
+      }.bind(this))
     },
     computed: {
       areAllSelected: function () {
@@ -59,15 +59,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
       //     task.completed = !task.completed
       // },
       addTask: function () {
-        var task = this.newTask.trim();
-        if (task) {
-          this.tasks.push({text: task, checked: false});
+        // var task = this.newTask.trim();
+        // if (task) {
+        //   this.tasks.push({text: task, checked: false});
+        //   this.newTask = "";
+        // }
+        var task = {
+          text: this.newTask.trim(),
+          checked: false
+          }
+        $.post('http://localhost:3000/api/v1/tasks.json', task, function(result){
+          this.tasks.push(result);
           this.newTask = "";
-        }
+        }.bind(this));
       },
       removeTask: function (task) {
         var index = this.tasks.indexOf(task);
-        this.tasks.splice(index, 1);
+        // this.tasks.splice(index, 1);
+
+        $.ajax ({
+          url: 'http://localhost:3000/api/v1/tasks/'+ task.id +'.json',
+          type: 'DELETE',
+          success: function (task) {
+            this.tasks.splice(index, 1);
+          }.bind(this)
+        })
+        // $.delete('http://localhost:3000/api/v1/tasks/'+ task.id +'.json'), index, function(task){
+        //   this.tasks.splice(index, 1);
+        // }
       },
       editTask: function (task) {
         this.editingTask = task;

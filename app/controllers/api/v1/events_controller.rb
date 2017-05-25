@@ -15,7 +15,7 @@ class Api::V1::EventsController < ApplicationController
       # location: params[:input_location], 
       # description: params[:input_description],
       # category_id: params[:event][:category_id],
-      user_id: 9
+      user_id: current_user.id
       )
   end 
 

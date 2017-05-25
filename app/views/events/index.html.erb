@@ -116,7 +116,7 @@
                 <div id="weather" class= "col-md-2" class="weather-icon">
                   <h3>{{ weatherData.location.city }}, {{ weatherData.location.region }}</h3>
                   <div> 
-                  <h3> <i class="slicon-weather_cloud"> </i>  {{ weatherData.item.condition.temp }} &deg; <h3>
+                  <h3> <i v-bind:class="getWeatherIcon()"> </i>  {{ weatherData.item.condition.temp }} &deg; <h3>
       
                   </div>
                 

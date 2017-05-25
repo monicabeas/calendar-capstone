@@ -16,21 +16,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
     	
     	$.get(api_url, function(response){
     		this.weatherData = response.query.results.channel;
-    		this.forecast = response.query.results.channel.item.forecast;
+    		this.condition = response.query.results.channel.item.condition;
     	}.bind(this));
+			},
+			getWeatherIcon: function(){
+				if(this.condition.text.includes("Sunny") || this.condition.text.includes("Clear")){
+					return "slicon-weather_sun";
+				} else if (this.condition.text.includes("Cloudy")){
+					return "slicon-weather_cloud";
+				} else if (this.condition.text.includes("Thunderstorms") || this.condition.text.includes("Rain") || this.condition.text.includes("Showers")){
+					return "slicon-weather_rain";
+				} else if (this.condition.text.includes("Breezy") || (this.condition.text.includes("Windy"))) {
+					return "slicon-weather_wind";
+				}
 			}
-
-			// getWeatherIcon: function(){
-			// 	if(this.weatherData.item.condition.text.includes("Sunny") || this.weatherData.item.condition.text.includes("Clear")){
-			// 		return "slicon-weather_sun";
-			// 	} else if (day.text.includes("Cloudy")){
-			// 		return "slicon-weather_cloud";
-			// 	} else if (day.text.includes("Thunderstorms") || day.text.includes("Rain") || day.text.includes("Showers")){
-			// 		return "slicon-weather_rain";
-			// 	} else if (day.text.includes("Breezy") || (day.text.includes("Windy")) {
-			// 		return "slicon-weather_wind";
-			// 	}
-			// }
     }
   });
 });
